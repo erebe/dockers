@@ -9,6 +9,7 @@ RUN apk update && \
     chmod 777 -R /data
 
 VOLUME /data
+EXPOSE 993
 
 CMD ["dovecot", "-F"]
 
