@@ -5,8 +5,7 @@ spamd -d
 
 WATCH_PATH=/data/cur
 
-inotifywait -m -e create $WATCH_PATH | while read i
+inotifywait -m -e moved_to --format '%w%f' $WATCH_PATH | while read file
 do
-  FILE_PATH=$WATCH_PATH/$(echo $i | cut -d ' ' -f 3)
-  spamc -c < $FILE_PATH || mv $FILE_PATH $WATCH_PATH/../.Spam/cur
+  spamc -c < $file || mv $file $WATCH_PATH/../.Spam/cur
 done
