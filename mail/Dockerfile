@@ -3,7 +3,7 @@ MAINTAINER github@erebe.eu
 
 ADD postfix-wrapper.sh /usr/bin/postfix-wrapper.sh
 RUN apk update && \
-    apk add ca-certificates postfix procmail && \
+    apk add ca-certificates postfix procmail curl && \
     rm -rf /var/cache/apk/* && \
     adduser -D erebe && \
     mkdir /home/erebe/procmail && \
