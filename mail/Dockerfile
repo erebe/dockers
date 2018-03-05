@@ -1,7 +1,6 @@
 FROM alpine:latest
 MAINTAINER github@erebe.eu
 
-ADD hmailclassifier /usr/bin/hmailclassifier
 ADD postfix-wrapper.sh /usr/bin/postfix-wrapper.sh
 RUN apk update && \
     apk add ca-certificates postfix procmail && \

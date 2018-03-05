@@ -24,6 +24,10 @@ trap "postfix reload" SIGHUP
 # force new copy of hosts there (otherwise links could be outdated)
 #cp /etc/hosts /var/spool/postfix/etc/hosts
 
+mail_filter_url=$(curl -s https://api.github.com/repos/erebe/hmailfilter/releases/latest | grep browser_download_url | cut -d '"' -f 4)
+curl -o hmailclassifier $mail_filter_url
+chmod +x hmailclassifier
+
 # start postfix
 postfix start
 
