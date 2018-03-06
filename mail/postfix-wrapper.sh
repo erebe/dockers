@@ -25,8 +25,8 @@ trap "postfix reload" SIGHUP
 #cp /etc/hosts /var/spool/postfix/etc/hosts
 
 mail_filter_url=$(curl -s https://api.github.com/repos/erebe/hmailfilter/releases/latest | grep browser_download_url | cut -d '"' -f 4)
-curl -o hmailclassifier $mail_filter_url
-chmod +x hmailclassifier
+curl -L -o /usr/bin/hmailclassifier $mail_filter_url
+chmod +x /usr/bin/hmailclassifier
 
 # start postfix
 postfix start
